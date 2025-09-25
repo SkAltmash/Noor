@@ -122,7 +122,7 @@ const HeroSection = () => {
 
           {/* APK Button */}
           <a
-            href="/Noor-v1.apk"
+            href="https://drive.google.com/file/d/1nIGvOVQ0m363N0nNv9cKnIWDM02WM1tS/view?usp=drive_link"
             download
             className="flex items-center justify-center gap-2 bg-black text-white px-5 py-2 rounded-lg shadow-md hover:bg-gray-900 transition"
           >
