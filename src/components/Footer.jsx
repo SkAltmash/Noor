@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const GithubIcon = ({ size = 16, className = '' }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -69,6 +70,15 @@ export default function Footer() {
                   </a>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/privacy-policy"
+                  className="text-slate-500 hover:text-amber-400 transition-colors duration-300 text-sm no-underline flex items-center gap-1.5"
+                >
+                  <span className="text-amber-500/60">🔒</span>
+                  Privacy Policy
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -121,6 +131,13 @@ export default function Footer() {
             >
               Sk Altamash
             </a>
+            {' '}·{' '}
+            <Link
+              to="/privacy-policy"
+              className="text-amber-500/70 hover:text-amber-400 transition-colors no-underline"
+            >
+              Privacy Policy
+            </Link>
           </p>
           <div className="flex items-center gap-1 text-slate-600 text-xs">
             <span>Made with</span>
