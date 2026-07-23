@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Package, Code2 } from 'lucide-react';
+import { Package, Code2, Gift, Star, WifiOff, User } from 'lucide-react';
 import { IslamicStar8 } from './Decorations';
 
 const GithubIcon = ({ size = 18, className = '' }) => (
@@ -15,10 +15,10 @@ const PlayIcon = ({ className = 'w-5 h-5' }) => (
 );
 
 const stats = [
-  { value: 'Free', label: 'Forever Free', icon: '🎁' },
-  { value: 'Open', label: 'Open Source', icon: '💻' },
-  { value: '7+', label: 'Islamic Features', icon: '🕌' },
-  { value: '100%', label: 'Offline Capable', icon: '📴' },
+  { value: 'Free',  label: 'Forever Free',    Icon: Gift,   color: 'text-amber-400'  },
+  { value: 'Open',  label: 'Open Source',      Icon: Code2,  color: 'text-emerald-400'},
+  { value: '7+',    label: 'Islamic Features', Icon: Star,   color: 'text-amber-400'  },
+  { value: '100%',  label: 'Offline Capable',  Icon: WifiOff,color: 'text-emerald-400'},
 ];
 
 const glassCardStyle = {
@@ -44,7 +44,6 @@ export default function Developer() {
       },
       { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
     );
-
     if (sectionRef.current) observer.observe(sectionRef.current);
     cardsRef.current.forEach((el) => el && observer.observe(el));
     return () => observer.disconnect();
@@ -65,15 +64,32 @@ export default function Developer() {
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-6">
+
+        {/* Section header */}
+        <div className="fade-up text-center mb-16">
+          <span className="inline-block text-[0.7rem] font-semibold py-0.5 px-2.5 rounded-[20px] bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 tracking-wider uppercase mb-4">
+            The Developer
+          </span>
+          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+            Built with <span className="gold-text">Purpose</span>
+          </h2>
+          <div
+            className="w-20 h-[3px] mx-auto rounded-sm"
+            style={{ background: 'linear-gradient(90deg, transparent, #c9a84c, transparent)' }}
+          />
+        </div>
+
         {/* Stats row */}
-        <div ref={sectionRef} className="fade-up grid grid-cols-2 sm:grid-cols-4 gap-4 mb-20">
+        <div ref={sectionRef} className="fade-up grid grid-cols-2 sm:grid-cols-4 gap-4 mb-16">
           {stats.map((stat, i) => (
             <div
               key={stat.label}
-              className="backdrop-blur-[20px] border border-gold/15 rounded-[20px] transition-all duration-[400ms] hover:border-gold/45 hover:shadow-[0_8px_40px_rgba(201,168,76,0.15)] hover:-translate-y-1 p-5 text-center"
+              className="backdrop-blur-[20px] border border-amber-400/15 rounded-[20px] transition-all duration-[400ms] hover:border-amber-400/45 hover:shadow-[0_8px_40px_rgba(201,168,76,0.15)] hover:-translate-y-1 p-5 text-center"
               style={{ ...glassCardStyle, transitionDelay: `${i * 80}ms` }}
             >
-              <div className="text-3xl mb-2">{stat.icon}</div>
+              <div className={`flex justify-center mb-2 ${stat.color}`}>
+                <stat.Icon size={28} />
+              </div>
               <div className="text-2xl font-bold gold-text mb-1">{stat.value}</div>
               <div className="text-slate-400 text-xs">{stat.label}</div>
             </div>
@@ -83,23 +99,23 @@ export default function Developer() {
         {/* Developer card */}
         <div
           ref={(el) => (cardsRef.current[0] = el)}
-          className="fade-up backdrop-blur-[20px] border border-gold/15 rounded-[20px] transition-all duration-[400ms] hover:border-gold/45 hover:shadow-[0_8px_40px_rgba(201,168,76,0.15)] p-8 lg:p-12 text-center"
+          className="fade-up backdrop-blur-[20px] border border-amber-400/15 rounded-[20px] transition-all duration-[400ms] hover:border-amber-400/45 hover:shadow-[0_8px_40px_rgba(201,168,76,0.15)] p-8 lg:p-12 text-center"
           style={{ ...glassCardStyle, transitionDelay: '200ms' }}
         >
-          {/* Avatar with glow */}
+          {/* Avatar */}
           <div className="relative inline-block mb-6">
             <div
-              className="w-24 h-24 rounded-full flex items-center justify-center text-4xl font-bold mx-auto border-2 border-gold/40"
+              className="w-24 h-24 rounded-full flex items-center justify-center mx-auto border-2 border-amber-400/40"
               style={{
                 background: 'linear-gradient(135deg, rgba(201,168,76,0.2), rgba(16,185,129,0.1))',
                 boxShadow: '0 0 40px rgba(201,168,76,0.2)',
               }}
             >
-              🧑‍💻
+              <User size={40} className="text-amber-400" />
             </div>
             <div
-              className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full border-2 border-navy flex items-center justify-center text-sm"
-              style={{ background: '#24292e' }}
+              className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full border-2 flex items-center justify-center"
+              style={{ background: '#24292e', borderColor: '#0d1b2a' }}
             >
               <GithubIcon size={14} className="text-white" />
             </div>
@@ -111,7 +127,7 @@ export default function Developer() {
 
           {/* Package ID */}
           <div
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl mb-8 font-mono text-sm text-gold border border-gold/15"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl mb-8 font-mono text-sm text-amber-400 border border-amber-400/15"
             style={{ background: 'rgba(0,0,0,0.3)' }}
           >
             <Package size={14} />
@@ -124,7 +140,7 @@ export default function Developer() {
               href="https://github.com/SkAltmash"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-[13px] rounded-full font-semibold text-gold cursor-pointer text-base no-underline border-2 border-gold/50 bg-transparent transition-all duration-[400ms] hover:border-gold hover:bg-gold/10 hover:shadow-[0_4px_20px_rgba(201,168,76,0.25)] hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 px-8 py-[13px] rounded-full font-semibold text-amber-400 cursor-pointer text-base no-underline border-2 border-amber-400/50 bg-transparent transition-all duration-[400ms] hover:border-amber-400 hover:bg-amber-400/10 hover:shadow-[0_4px_20px_rgba(201,168,76,0.25)] hover:-translate-y-0.5"
               id="dev-github-link"
             >
               <GithubIcon size={18} />
@@ -134,7 +150,7 @@ export default function Developer() {
               href="https://play.google.com/store/apps/details?id=com.sk_altamash188.noor"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full font-bold text-navy cursor-pointer text-base no-underline transition-all duration-[400ms] hover:-translate-y-0.5 hover:scale-[1.03]"
+              className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full font-bold text-[#0d1b2a] cursor-pointer text-base no-underline transition-all duration-[400ms] hover:-translate-y-0.5 hover:scale-[1.03]"
               style={btnGoldStyle}
               id="dev-playstore-link"
             >
@@ -147,14 +163,14 @@ export default function Developer() {
         {/* Open source note */}
         <div
           ref={(el) => (cardsRef.current[1] = el)}
-          className="fade-up mt-8 bg-white/[0.04] backdrop-blur-[16px] border border-gold/20 rounded-2xl p-6 text-center"
+          className="fade-up mt-8 bg-white/[0.04] backdrop-blur-[16px] border border-amber-400/20 rounded-2xl p-6 text-center"
           style={{ transitionDelay: '350ms' }}
         >
           <Code2 className="text-amber-400 mx-auto mb-3" size={28} />
           <h3 className="text-white font-semibold text-lg mb-2">Open Source & Free Forever</h3>
           <p className="text-slate-400 text-sm max-w-lg mx-auto leading-relaxed">
             Noor is completely free to use, with no ads and no subscriptions. The source code is
-            open for the community to learn from, contribute to, and build upon. Made with ❤️ for
+            open for the community to learn from, contribute to, and build upon. Made with love for
             the Muslim community.
           </p>
         </div>

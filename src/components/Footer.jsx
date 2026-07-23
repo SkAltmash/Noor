@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Lock } from 'lucide-react';
 
 const GithubIcon = ({ size = 16, className = '' }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -75,7 +76,7 @@ export default function Footer() {
                   to="/privacy-policy"
                   className="text-slate-500 hover:text-amber-400 transition-colors duration-300 text-sm no-underline flex items-center gap-1.5"
                 >
-                  <span className="text-amber-500/60">🔒</span>
+                  <Lock size={13} className="text-amber-500/60" />
                   Privacy Policy
                 </Link>
               </li>
